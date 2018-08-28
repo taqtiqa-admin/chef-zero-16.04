@@ -7,15 +7,18 @@ Vagrant.require_version '>= 1.5.0'
  
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
+  config.ssh.insert_key = false
+
   config.vm.define 'chef-zero-16.04-vm' do |node|
-    node.vm.box      = 'ubuntu/xenial64'
-    node.vm.hostname = 'chef-zero-16.04'
+    node.vm.box         = 'bento/ubuntu-16.04'
+    node.vm.box_version = '201808.24.0'
+    node.vm.hostname    = 'chef-zero-16.04'
     node.vm.network :private_network, ip: '33.33.33.10'
   end
  
   config.vm.provider :virtualbox do |virtualbox|
     virtualbox.name   = 'chef-zero-16.04'
-    virtualbox.memory = 1024
+    virtualbox.memory = 1024*1
     virtualbox.cpus   = 1
   end
  
