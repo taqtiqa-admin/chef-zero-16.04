@@ -6,7 +6,7 @@ VAGRANTFILE_API_VERSION = '2'
 Vagrant.require_version '>= 1.5.0'
  
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  
+
   config.ssh.insert_key = false
 
   if Vagrant.has_plugin?("vagrant-proxyconf")
@@ -35,7 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
  
   config.vm.provider :virtualbox do |virtualbox|
     virtualbox.name   = 'chef-zero-16.04'
-    virtualbox.memory = 1024
+    virtualbox.memory = 1024*1
     virtualbox.cpus   = 1
     virtualbox.customize [ "modifyvm", :id, "--uart1", "0x3f8","4"]
     virtualbox.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
@@ -48,5 +48,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.nodes_path     = '.chef/nodes'
     chef.roles_path     = '.chef/roles'
     chef.data_bags_path = '.chef/data_bags'
+ 
   end
 end
