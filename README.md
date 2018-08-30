@@ -38,4 +38,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 end
 ```
-
+## Build instructions
+```bash
+vagrant package --base chef-zero-16.04 --output /tmp/chef-zero-16.04.box
+```
